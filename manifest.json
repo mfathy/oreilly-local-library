@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "O'Reilly Local Library",
+  "description": "Label books you already own on learning.oreilly.com and manage your local JSON library.",
+  "version": "1.0.0",
+  "permissions": ["storage", "downloads"],
+  "host_permissions": ["https://learning.oreilly.com/*"],
+  "action": {
+    "default_title": "O'Reilly Local Library",
+    "default_popup": "src/popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://learning.oreilly.com/*"],
+      "js": ["src/content/contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

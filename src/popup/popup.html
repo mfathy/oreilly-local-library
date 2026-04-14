@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O'Reilly Local Library</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>O'Reilly Local Library</h1>
+
+      <section class="panel">
+        <h2>Import Library JSON</h2>
+        <input id="fileInput" type="file" accept=".json,application/json" />
+      </section>
+
+      <section class="panel">
+        <h2>Add Book</h2>
+        <form id="addBookForm">
+          <label>
+            Book ID
+            <input id="bookIdInput" type="text" required />
+          </label>
+          <label>
+            Title
+            <input id="titleInput" type="text" required />
+          </label>
+          <label>
+            ISBN (optional)
+            <input id="isbnInput" type="text" />
+          </label>
+          <label>
+            URL (optional)
+            <input id="urlInput" type="url" />
+          </label>
+          <label>
+            Description (optional)
+            <textarea id="descriptionInput" rows="2"></textarea>
+          </label>
+          <button type="submit">Add Book</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="row">
+          <h2>Library (<span id="count">0</span>)</h2>
+          <button id="exportButton" type="button">Export JSON</button>
+        </div>
+        <p id="statusText" class="status"></p>
+        <ul id="bookList" class="book-list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>
