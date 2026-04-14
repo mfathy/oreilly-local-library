@@ -2,17 +2,10 @@ import { normalizeLibraryRecords } from "../shared/normalize.js";
 import { getLibraryState, saveLibraryRecords } from "../shared/storage.js";
 
 const fileInput = document.getElementById("fileInput");
-const addBookForm = document.getElementById("addBookForm");
 const bookList = document.getElementById("bookList");
 const count = document.getElementById("count");
 const statusText = document.getElementById("statusText");
 const exportButton = document.getElementById("exportButton");
-
-const bookIdInput = document.getElementById("bookIdInput");
-const titleInput = document.getElementById("titleInput");
-const isbnInput = document.getElementById("isbnInput");
-const urlInput = document.getElementById("urlInput");
-const descriptionInput = document.getElementById("descriptionInput");
 
 let records = [];
 
@@ -112,27 +105,6 @@ async function onFileInputChange(event) {
   }
 }
 
-async function onAddBookSubmit(event) {
-  event.preventDefault();
-
-  const newRecord = {
-    bookId: bookIdInput.value.trim(),
-    isbn: isbnInput.value.trim(),
-    title: titleInput.value.trim(),
-    url: urlInput.value.trim(),
-    description: descriptionInput.value.trim()
-  };
-
-  if (!newRecord.bookId || !newRecord.title) {
-    setStatus("Book ID and Title are required.", true);
-    return;
-  }
-
-  const nextRecords = normalizeLibraryRecords([...records, newRecord]);
-  await persistRecords(nextRecords, `Added "${newRecord.title}".`);
-  addBookForm.reset();
-}
-
 function downloadJson(text, filename) {
   const blob = new Blob([text], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -163,12 +135,11 @@ async function loadInitialState() {
   if (records.length) {
     setStatus(`Loaded ${records.length} books from local storage.`);
   } else {
-    setStatus("Load a JSON file to begin.");
+    setStatus("Import JSON, then add or remove books on O'Reilly pages.");
   }
 }
 
 fileInput.addEventListener("change", onFileInputChange);
-addBookForm.addEventListener("submit", onAddBookSubmit);
 exportButton.addEventListener("click", onExportClick);
 
 loadInitialState();

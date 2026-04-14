@@ -7,8 +7,8 @@ Chrome extension (Manifest V3) that helps you identify and manage books you alre
 - Import a JSON file of your books
 - Normalize and simplify imported records
 - Store your library in `chrome.storage.local`
-- Show an `Owned` badge beside matched books on O'Reilly pages
-- Manage the library in the popup (add/remove books)
+- Show inline `Add` and `Owned ×` controls beside books on O'Reilly pages
+- Add/remove books directly on the page (without manual form entry)
 - Export an updated JSON copy of your current library
 
 ## Install (Load Unpacked)
@@ -23,9 +23,11 @@ Chrome extension (Manifest V3) that helps you identify and manage books you alre
 1. Click the extension icon and open the popup
 2. Import your library JSON file
 3. Review sorted books list (sorted by title)
-4. Add or remove books as needed
-5. Click **Export JSON** to download an updated copy
-6. Visit `https://learning.oreilly.com/` and look for `Owned` badges
+4. Visit `https://learning.oreilly.com/`
+5. Click `Add` beside any book to save it to local JSON storage
+6. Click `Owned ×` to remove a saved book
+7. Click **Export JSON** to download an updated copy
+8. Reload O'Reilly pages and verify button/label state updates
 
 ## Accepted Import JSON
 
@@ -86,5 +88,5 @@ Book matches are checked in this order:
 
 - Load unpacked extension in `chrome://extensions`
 - Import `test-data/sample-library.json`
-- Open `https://learning.oreilly.com/` and verify `Owned` badges
+- Open `https://learning.oreilly.com/` and verify `Add` / `Owned ×` controls
 - Use `TESTING.md` for the full validation checklist
